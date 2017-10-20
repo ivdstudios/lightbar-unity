@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Bar : MonoBehaviour {
 
@@ -65,10 +66,23 @@ public class Bar : MonoBehaviour {
             _height = (percent * _initialHeight) / 100;
         }
 
+        Model.SetHeight(_height);
+
         #endregion
 
-        // TODO: Animation Bar
-        Model.transform.localScale = new Vector3(Model.transform.localScale.x, _height, Model.transform.localScale.z);
+    }
+
+    #endregion
+
+
+    #region Test
+
+    public void Increase10() {
+        SetValue(_value + 10);
+    }
+
+    public void Decrease10() {
+        SetValue(_value - 10);
     }
 
     #endregion
