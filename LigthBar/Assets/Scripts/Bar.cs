@@ -63,7 +63,7 @@ public class Bar : MonoBehaviour {
 
         } else {
             int percent = MathHelper.GetPercentByMaxAndMin(_value, MinValue, MaxValue);
-            _height = (percent * _initialHeight) / 100;
+            _height = MinHeight + ((percent * _initialHeight) / 100);
         }
 
         Model.SetHeight(_height);
