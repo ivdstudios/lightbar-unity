@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class BarModel : MonoBehaviour {
 
+    [Header("Childs")]
     public GameObject Mesh;
+    public Canvas CanvasBar;
 
     /**************************************************/
 
@@ -13,15 +15,17 @@ public class BarModel : MonoBehaviour {
         Vector3 targetScale = transform.localScale;
         targetScale.y = height;
 
-        StartCoroutine(LerpScale(1.0f, targetScale));
+        Vector3 targetPosition = new Vector3(0.0f, height + 0.2f, 0.0f);
+        StartCoroutine(LerpScale(1.0f, targetScale, targetPosition));
     }
 
-    private IEnumerator LerpScale(float time, Vector3 targetScale) {
+    private IEnumerator LerpScale(float time, Vector3 targetScale, Vector3 targetPosition) {
         float originalTime = time;
 
         while (time > 0.0f) {
             time -= Time.deltaTime;
-            transform.localScale = Vector3.Lerp(targetScale, transform.localScale, time / originalTime);
+            transform.localScale = Vector3.Slerp(targetScale, transform.localScale, time / originalTime);
+            CanvasBar.transform.localPosition = Vector3.Lerp(targetPosition, CanvasBar.transform.localPosition, time / originalTime);
 
             yield return null;
         }

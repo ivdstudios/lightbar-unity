@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Bar : MonoBehaviour {
 
-    [Header("3D")]
+    [Header("Childs")]
     public BarModel Model;
+    public Text TxtValue;
 
     [Space(10)]
     [Header("Values")]
@@ -69,6 +70,8 @@ public class Bar : MonoBehaviour {
         Model.SetHeight(_height);
 
         #endregion
+
+        TxtValue.text = _value.ToFormat();
 
     }
 
